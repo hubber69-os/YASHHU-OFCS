@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Special Question for You ❤️</title>
+  <!-- Google Fonts for cute, modern romantic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Sacramento&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Canvas for Floating Hearts & Sparkles -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Sound Toggle Control -->
+  <div class="audio-control-container">
+    <button id="music-toggle-btn" class="music-toggle-btn" aria-label="Toggle romantic music">
+      <span class="music-icon">🎵</span>
+      <span class="music-text">Romantic Melody: <strong id="music-status">OFF</strong></span>
+      <span class="music-wave" id="music-wave">
+        <i></i><i></i><i></i><i></i>
+      </span>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="page-wrapper">
+    <div class="glass-card" id="invite-card">
+      
+      <!-- Top Decorative Ribbon / Tag -->
+      <div class="love-badge">
+        <span class="sparkle-star">✨</span>
+        <span>A Special Question Just For You</span>
+        <span class="sparkle-star">✨</span>
+      </div>
+
+      <!-- Cute Animated Romantic Illustration (Self-contained vector SVG) -->
+      <div class="illustration-wrapper">
+        <div class="glow-orb"></div>
+        <svg class="cute-couple-svg" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Floating mini hearts around illustration -->
+          <g class="floating-svg-hearts">
+            <path class="svg-heart heart-1" d="M120 28 C120 18, 105 15, 105 28 C105 40, 120 52, 120 52 C120 52, 135 40, 135 28 C135 15, 120 18, 120 28 Z" fill="#ff4d6d" />
+            <path class="svg-heart heart-2" d="M60 45 C60 37, 48 35, 48 45 C48 55, 60 64, 60 64 C60 64, 72 55, 72 45 C72 35, 60 37, 60 45 Z" fill="#ff758f" />
+            <path class="svg-heart heart-3" d="M180 40 C180 32, 168 30, 168 40 C168 50, 180 59, 180 59 C180 59, 192 50, 192 40 C192 30, 180 32, 180 40 Z" fill="#ff758f" />
+          </g>
+
+          <!-- Bench / Cloud Platform -->
+          <ellipse cx="120" cy="155" rx="85" ry="14" fill="rgba(255, 182, 193, 0.45)" />
+
+          <!-- Left Cute Bear / Bunny Character -->
+          <g class="character char-left">
+            <!-- Ears -->
+            <ellipse cx="73" cy="82" rx="9" ry="14" fill="#ffccd5" transform="rotate(-15 73 82)" />
+            <ellipse cx="73" cy="82" rx="5" ry="9" fill="#ffb3c1" transform="rotate(-15 73 82)" />
+            <ellipse cx="97" cy="80" rx="9" ry="14" fill="#ffccd5" transform="rotate(10 97 80)" />
+            <ellipse cx="97" cy="80" rx="5" ry="9" fill="#ffb3c1" transform="rotate(10 97 80)" />
+            <!-- Body -->
+            <ellipse cx="85" cy="132" rx="28" ry="24" fill="#fff0f3" />
+            <ellipse cx="85" cy="135" rx="19" ry="16" fill="#ffe5ec" />
+            <!-- Head -->
+            <circle cx="85" cy="98" r="26" fill="#fff0f3" />
+            <!-- Blush -->
+            <ellipse cx="72" cy="105" rx="6" ry="3.5" fill="#ff8fa3" opacity="0.7" />
+            <ellipse cx="98" cy="105" rx="6" ry="3.5" fill="#ff8fa3" opacity="0.7" />
+            <!-- Eyes -->
+            <circle cx="76" cy="97" r="3" fill="#4a2828" />
+            <circle cx="75" cy="95" r="1.2" fill="#fff" />
+            <circle cx="94" cy="97" r="3" fill="#4a2828" />
+            <circle cx="93" cy="95" r="1.2" fill="#fff" />
+            <!-- Cute Smile -->
+            <path d="M82 104 Q85 107 88 104" stroke="#4a2828" stroke-width="1.8" stroke-linecap="round" fill="none" />
+            <!-- Cute little paws holding hands -->
+            <ellipse cx="102" cy="128" rx="7" ry="6" fill="#fff0f3" />
+          </g>
+
+          <!-- Right Cute Bear Character -->
+          <g class="character char-right">
+            <!-- Ears -->
+            <circle cx="140" cy="80" r="10" fill="#f8edeb" />
+            <circle cx="140" cy="80" r="6" fill="#fcd5ce" />
+            <circle cx="168" cy="82" r="10" fill="#f8edeb" />
+            <circle cx="168" cy="82" r="6" fill="#fcd5ce" />
+            <!-- Body -->
+            <ellipse cx="155" cy="132" rx="28" ry="24" fill="#fae1dd" />
+            <ellipse cx="155" cy="135" rx="19" ry="16" fill="#fcd5ce" />
+            <!-- Head -->
+            <circle cx="154" cy="98" r="26" fill="#fae1dd" />
+            <!-- Cheeks -->
+            <ellipse cx="141" cy="105" rx="6" ry="3.5" fill="#ff8fa3" opacity="0.7" />
+            <ellipse cx="167" cy="105" rx="6" ry="3.5" fill="#ff8fa3" opacity="0.7" />
+            <!-- Happy closed curved eyes (smiling) -->
+            <path d="M140 98 Q144 94 148 98" stroke="#4a2828" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M160 98 Q164 94 168 98" stroke="#4a2828" stroke-width="2" stroke-linecap="round" fill="none" />
+            <!-- Cute Smile -->
+            <path d="M151 104 Q154 107 157 104" stroke="#4a2828" stroke-width="1.8" stroke-linecap="round" fill="none" />
+            <!-- Little flower or hair accessory -->
+            <circle cx="132" cy="78" r="4.5" fill="#ff4d6d" />
+            <circle cx="132" cy="78" r="2" fill="#fff" />
+            <!-- Hand holding -->
+            <ellipse cx="138" cy="128" rx="7" ry="6" fill="#fae1dd" />
+          </g>
+
+          <!-- Connected heart between paws -->
+          <path class="svg-sparkle-center" d="M120 120 C120 114, 110 112, 110 120 C110 128, 120 135, 120 135 C120 135, 130 128, 130 120 C130 112, 120 114, 120 120 Z" fill="#ff2a54" />
+        </svg>
+      </div>
+
+      <!-- Love Meter Section -->
+      <div class="love-meter-container">
+        <div class="love-meter-header">
+          <span class="meter-label">Love Meter 💖</span>
+          <span class="meter-percentage" id="meter-percentage">15%</span>
+        </div>
+        <div class="meter-track">
+          <div class="meter-fill" id="meter-fill">
+            <span class="meter-glow"></span>
+          </div>
+        </div>
+        <p class="meter-hint" id="meter-hint">Every time you resist, my love only grows stronger!</p>
+      </div>
+
+      <!-- Hero Header Section -->
+      <header class="hero-header">
+        <h1 class="main-heading">
+          Will You Go On A Date With Me? <span class="pulsing-heart">❤️</span>
+        </h1>
+        <div class="typing-container">
+          <p class="sub-heading" id="typing-text"></p>
+          <span class="cursor">|</span>
+        </div>
+      </header>
+
+      <!-- Teasing Alert Bubble (appears when NO is approached) -->
+      <div class="tease-bubble" id="tease-bubble" aria-live="polite">
+        <span class="bubble-tail"></span>
+        <span class="bubble-icon">🥺</span>
+        <span class="bubble-text" id="tease-text">Are you sure?</span>
+      </div>
+
+      <!-- Interactive Decision Buttons Area -->
+      <div class="buttons-area" id="buttons-area">
+        <button id="yes-btn" class="action-btn yes-btn" type="button">
+          <span class="btn-sparkle">✨</span>
+          <span class="btn-text">YES 💕</span>
+          <span class="btn-glow"></span>
+        </button>
+
+        <button id="no-btn" class="action-btn no-btn" type="button">
+          <span class="btn-text">NO 😢</span>
+        </button>
+      </div>
+
+      <!-- Footer Note -->
+      <footer class="card-footer">
+        <p>Made with endless love, sweet treats & butterflies in my stomach 🦋</p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Celebration Modal (Appears when YES is clicked) -->
+  <div class="celebration-overlay" id="celebration-overlay" aria-hidden="true">
+    <!-- Full-screen Fireworks & Confetti Canvas -->
+    <canvas id="celebration-canvas"></canvas>
+
+    <div class="celebration-modal glass-card">
+      <div class="celebration-badge">💍 Official Love Milestone 💍</div>
+
+      <div class="big-yay-header">
+        <h2 class="yay-title">YAY!! ❤️</h2>
+        <h3 class="yay-subtitle">I Can't Wait For Our Date! 💖</h3>
+      </div>
+
+      <div class="date-ticket">
+        <div class="ticket-header">
+          <span>✨ ADMIT TWO HEARTS ✨</span>
+          <span class="ticket-id">DATE #L0V3-FOREVER</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-status-pill">
+            <span class="lock-icon">🔒</span>
+            <span>Date Status: <strong>LOCKED IN 💍</strong></span>
+          </div>
+          <p class="ticket-message">
+            "Your smile is my favorite view, and making you happy is my favorite mission. Get ready for delicious food, sweet moments, and lots of laughter!"
+          </p>
+
+          <div class="date-perks">
+            <div class="perk-item">
+              <span class="perk-icon">🚗</span>
+              <span>Personal Chauffeur & Door Opener</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">🍫</span>
+              <span>Unlimited Snacks & Desserts</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">📸</span>
+              <span>Cute Photos Taken On Demand</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">🥰</span>
+              <span>100% Guaranteed Smile Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <span>📅 Whenever You're Free • 📍 Anywhere With You</span>
+        </div>
+      </div>
+
+      <div class="celebration-actions">
+        <button id="replay-celebration-btn" class="action-btn celebration-btn">
+          <span>More Confetti & Love! 🎉</span>
+        </button>
+        <button id="share-note-btn" class="action-btn note-btn">
+          <span>Copy Romantic Note 💌</span>
+        </button>
+      </div>
+      <div id="copy-toast" class="copy-toast">Copied note to clipboard! Send it to me now 💌</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
